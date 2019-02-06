@@ -8,22 +8,23 @@ class AccountContainer extends Component {
   constructor() {
     super()
 
-    // get a default state working with the data imported from TransactionsData
-    // use this to get the functionality working
-    // then replace the default transactions with a call to the API
-
   }
+  state = { transactions: transactions,
+            search: ""}
 
   handleChange(event) {
-    // your code here
+    let filteredTransactions = this.state.transactions
+    filteredTransactions = filteredTransactions.filter((transaction) => {
+      return transactions // was not able to finsih the filtering 
+    })
   }
 
   render() {
 
     return (
       <div>
-        <Search />
-        <TransactionsList />
+        <Search transactions={this.state.transactions} handleChange={this.handleChange}/>
+        <TransactionsList transactions={this.state.transactions}/>
       </div>
     )
   }
